@@ -23,6 +23,8 @@
                   <label for="">Customer</label>
                   <input type="text" name="customer" class="form-control" id=""  value="{{$equipment->customer}}"
                     required="">
+                  <input type="hidden" name="id_equipment" class="form-control" id=""  value="{{$equipment->id}}"
+                    required="">
                   <input type="hidden" name="id_equipment" class="form-control" id=""  value="{{$id}}"
                     required="">
                   <label for="">No Kontak</label>

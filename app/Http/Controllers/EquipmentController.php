@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Area;
+use App\Models\Customer;
 use App\Models\Equipment;
+use App\Models\History;
 use App\Models\Kapasitas;
 use Illuminate\Http\Request;
 
@@ -29,7 +31,8 @@ class EquipmentController extends Controller
     {
         $area= Area::all();
         $kapasitas= Kapasitas::all();
-        return view('equipment.create', compact('area', 'kapasitas'));
+        $customer= Customer::all();
+        return view('equipment.create', compact('area', 'kapasitas','customer'));
     }
 
     /**
@@ -42,6 +45,7 @@ class EquipmentController extends Controller
     {
         $equipment= new Equipment;
         $equipment->jenis= $request->jenis;
+        $equipment->customer= $request->customer;
         $equipment->brand= $request->brand;
         $equipment->serial_number= $request->serial_number;
         $equipment->nameplate= $request->nameplate;
@@ -67,7 +71,8 @@ class EquipmentController extends Controller
      */
     public function show(Equipment $equipment)
     {
-            return view('equipment.show', compact('equipment'));
+            $history = History::where('id_equipment',$equipment->id)->get();
+            return view('equipment.show', compact('equipment','history'));
     }
 
     /**

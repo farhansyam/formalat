@@ -298,10 +298,22 @@
                     <th scope="col">No</th>
                     <th scope="col">Tanggal</th>
                     <th scope="col">Type</th>
-                    <th scope="col">Keterangan</th>
                     <th scope="col">Option</th>
                   </tr>
                 </thead>
+                <tbody>
+                  @php
+                    $no = 1;
+                  @endphp
+                  @foreach ($history as $data)
+                    <tr>
+                      <td>{{$no++}}</td>
+                      <td>{{$data->created_at}}</td>
+                      <td>{{$data->type}}</td>
+                      <td><button class="btn btn-primary">Detail</button></td>
+                    </tr>
+                  @endforeach
+                </tbody>
               </table>
             </div>
             <!--/span-->
