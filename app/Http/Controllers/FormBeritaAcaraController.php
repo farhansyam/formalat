@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\History;
 use App\Models\Equipment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -50,8 +51,15 @@ class FormBeritaAcaraController extends Controller
             ]);
         }
 
+        $history = new History();
+        $history->type = "Survei"; 
+        $history->id_act = $formBeritaAcara->id;
+        $history->id_equipment = $request->id_equipment;
+        $history->id_user = "1";
+        $history->save();
+        
 
-        return redirect()->route('formberitaacara.index')->with('success', 'Form Berita Acara telah disimpan.');
+    return redirect()->route('equipment.show',$request->id_equipment)->with('success', 'Form Berita Acara telah disimpan.');
     }
 
 

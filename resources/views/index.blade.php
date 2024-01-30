@@ -52,7 +52,7 @@
             </div>
           </div>
           <div class="d-flex align-items-center justify-content-between mt-4">
-            <h3 class="mb-0 fw-semibold fs-7">1.200</h3>
+            <h3 class="mb-0 fw-semibold fs-7">{{$survey}}</h3>
           </div>
         </div>
       </div>
@@ -81,107 +81,33 @@
       <div class="table-responsive mt-4">
         <table class="table table-borderless text-nowrap align-middle mb-0">
           <tbody>
+            @php
+            $no =1;
+            @endphp
+            @foreach ($history as $data)
+            @php
+            $equipment = \App\Models\Equipment::find($data->id_equipment);
+            @endphp
             <tr class="bg-light">
               <td class="rounded-start bg-transparent">
                 <div class="d-flex align-items-center gap-3">
                   <div>
-                    <i class="cc BTC fs-7"></i>
-                  </div>
-                  <div>
-                    <h6 class="mb-0">Bitcoin</h6>
-                    <span class="fs-3">BTC</span>
+                    <span class="">{{$no}}</span>
                   </div>
                 </div>
               </td>
-              <td class="bg-transparent"> $981.1254 <i class="ti ti-chevron-down text-danger ms-1 fs-4"></i>
+              <td class="bg-transparent"> {{$equipment->customer}} <i class="ti ti-chevron-down text-danger ms-1 fs-4"></i>
               </td>
               <td class="bg-transparent">
-                <i class="cc ETC me-1 text-primary fs-5" title="ETC"></i> 0.23125
+                <i class=""></i>{{$equipment->brand}}
               </td>
-              <td class="bg-transparent">$1.23560 B</td>
-              <td class="bg-transparent">04 Feb 2023</td>
+              <td class="bg-transparent">{{$data->created_at}}</td>
               <td class="text-end rounded-end bg-transparent">
-                <span class="badge bg-danger">transfer</span>
+                <span class="badge bg-danger">{{$data->type}}</span>
               </td>
             </tr>
-            <tr>
-              <td colspan="6"></td>
-            </tr>
-            <tr class="bg-light">
-              <td class="rounded-start bg-transparent">
-                <div class="d-flex align-items-center gap-3">
-                  <div>
-                    <i class="cc ETH fs-7"></i>
-                  </div>
-                  <div>
-                    <h6 class="mb-0">Ethereum</h6>
-                    <span class="fs-3">ETH</span>
-                  </div>
-                </div>
-              </td>
-              <td class="bg-transparent"> $450.1254 <i class="ti ti-chevron-down text-danger ms-1 fs-4"></i>
-              </td>
-              <td class="bg-transparent">
-                <i class="cc ETC me-1 text-primary fs-5" title="ETC"></i> 0.45000
-              </td>
-              <td class="bg-transparent">$3.23560 B</td>
-              <td class="bg-transparent">09 Mar 2023</td>
-              <td class="text-end rounded-end bg-transparent">
-                <span class="badge bg-primary">sell</span>
-              </td>
-            </tr>
-            <tr>
-              <td colspan="6"></td>
-            </tr>
-            <tr class="bg-light">
-              <td class="rounded-start bg-transparent">
-                <div class="d-flex align-items-center gap-3">
-                  <div>
-                    <i class="cc LTC fs-7"></i>
-                  </div>
-                  <div>
-                    <h6 class="mb-0">Litecoin</h6>
-                    <span class="fs-3">LTC</span>
-                  </div>
-                </div>
-              </td>
-              <td class="bg-transparent"> $100.1254 <i class="ti ti-chevron-up text-success ms-1 fs-4"></i>
-              </td>
-              <td class="bg-transparent">
-                <i class="cc BTC me-1 text-danger fs-5" title="BTC"></i> 0.56012
-              </td>
-              <td class="bg-transparent">$2.45620 B</td>
-              <td class="bg-transparent">12 Dec 2023</td>
-              <td class="text-end rounded-end bg-transparent">
-                <span class="badge bg-success">buy</span>
-              </td>
-            </tr>
-            <tr>
-              <td colspan="6"></td>
-            </tr>
-            <tr class="bg-light">
-              <td class="rounded-start bg-transparent">
-                <div class="d-flex align-items-center gap-3">
-                  <div>
-                    <i class="cc XRP fs-7"></i>
-                  </div>
-                  <div>
-                    <h6 class="mb-0">XRP</h6>
-                    <span class="fs-3">XRP</span>
-                  </div>
-                </div>
-              </td>
-              <td class="bg-transparent"> $450.1254 <i class="ti ti-chevron-down text-danger ms-1 fs-4"></i>
-              </td>
-              <td class="bg-transparent">
-                <i class="cc ETC me-1 text-primary fs-5" title="ETC"></i> 0.45000
-              </td>
-              <td class="bg-transparent">$3.23560 B</td>
-              <td class="bg-transparent">01 Aug 2023</td>
-              <td class="text-end rounded-end bg-transparent">
-                <span class="badge bg-danger">transfer</span>
-              </td>
-            </tr>
+            @endforeach
+
           </tbody>
         </table>
       </div>

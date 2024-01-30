@@ -71,6 +71,12 @@
                 <option value="{{$data->area}}">{{$data->area}} - {{$data->site}}</option>
                 @endforeach
               </select>
+              <label for="">Customer</label>
+              <select name="customer" id="" class="form-select">
+                @foreach ($customer as $data)
+                <option value="{{$data->nama}}">{{$data->nama}}</option>
+                @endforeach
+              </select>
               <button class="btn btn-info px-4 mt-3" type="submit">
                 Submit
               </button>
