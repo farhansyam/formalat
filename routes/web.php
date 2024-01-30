@@ -1,6 +1,12 @@
 <?php
 
 use App\Http\Controllers\AreaController;
+
+use App\Http\Controllers\ColdStorageController;
+use App\Http\Controllers\CoolingUnitController;
+use App\Http\Controllers\EvaporatorAirCoolerController;
+use App\Http\Controllers\MiniChillerController;
+
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EquipmentController;
@@ -32,6 +38,10 @@ Route::resource('formberitaacara', FormBeritaAcaraController::class)->name('inde
 Route::get('survey/{id}', [FormBeritaAcaraController::class,'create'])->name('survey.create');
 Route::resource('troubleshoot', TroubleshootController::class)->name('index', 'troubleshoot.index');
 
-Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/cold-storage', [ColdStorageController::class, 'index'])->name('cold-storage.index');
+Route::get('/cooling-unit', [CoolingUnitController::class, 'index'])->name('cooling-unit.index');
+Route::get('/evaporator-aircooler', [EvaporatorAirCoolerController::class, 'index'])->name('evaporator-aircooler.index');
+Route::get('/mini-chiller', [MiniChillerController::class, 'index'])->name('mini-chiller.index');

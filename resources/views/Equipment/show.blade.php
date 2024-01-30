@@ -180,25 +180,24 @@
                           </button>
                         </a>
                         @elseif($equipment->jenis == 5)
-                        <a href="">
-                          <button type="button" class="btn btn-info">
-                            Task List Cold Storage
-                          </button>
-                        </a>
+                        <a href="{{ route('cold-storage.index') }}">
+                          <button type="button" class="btn btn-info">Task List Cold Storage</button>
+                      </a>
+                      
                         @elseif($equipment->jenis == 6)
-                        <a href="">
+                        <a href="{{ route('cooling-unit.index') }}">
                           <button type="button" class="btn btn-info">
                             Task List Cooling Unit & AC Panel
                           </button>
                         </a>
                         @elseif($equipment->jenis == 7)
-                        <a href="">
+                        <a href="{{ route('mini-chiller.index') }}">
                           <button type="button" class="btn btn-info">
                             Task List Mini Chiller
                           </button>
                         </a>
                         @elseif($equipment->jenis == 8)
-                        <a href="">
+                        <a href="{{ route('evaporator-aircooler.index') }}">
                           <button type="button" class="btn btn-info">
                             Task List Evaporative Air Cooler
                           </button>

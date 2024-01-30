@@ -101,6 +101,8 @@ class EquipmentController extends Controller
      */
     public function destroy(Equipment $equipment)
     {
-        //
+        $equipment->delete();
+        return redirect()->route('equipment.index')->with('success', 'Data equipment berhasil dihapus');
     }
+    
 }
