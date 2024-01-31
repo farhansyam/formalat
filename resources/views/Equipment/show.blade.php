@@ -14,6 +14,7 @@
           <div class="card-body">
             <h5 class="card-title mb-0">Equipment Info</h5>
             <img src="{{asset('storage/image')}}/{{$equipment->foto}}" alt="">
+            {!!$equipment->qrcode!!}
           </div>
           <hr class="mt-0 mb-5">
           <div class="card-body">
@@ -145,150 +146,54 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="row">
-                      <div class="col-md-offset-9 col-md-9">
-                        <a href="{{route('survey.create',$equipment->id)}}" class="btn btn-primary">
-
+                      <div class="col-md-6 col-sm-12 mb-2">
+                        <a href="{{ route('survey.create', $equipment->id) }}" class="btn btn-primary w-100">
                           <i class="ti ti-edit fs-5"></i> Survey
                         </a>
-                        <a href="">
-                          <button type="button" class="btn btn-danger">
-                            Trouble Shoot
-                          </button>
-                        </a>
-                        @if($equipment->jenis == 1)
-                        <a href="">
-                          <button type="button" class="btn btn-info">
-                            Task List Ac Split
-                          </button>
-                        </a>
-                        @elseif($equipment->jenis == 2)
-                        <a href="">
-                          <button type="button" class="btn btn-info">
-                            Task List AUHP
-                          </button>
-                        </a>
-                        @elseif($equipment->jenis == 3)
-                        <a href="">
-                          <button type="button" class="btn btn-info">
-                            Task List Cooled Water Chiller
-                          </button>
-                        </a>
-                        @elseif($equipment->jenis == 4)
-                        <a href="">
-                          <button type="button" class="btn btn-info">
-                            Task List PAC
-                          </button>
-                        </a>
-                        @elseif($equipment->jenis == 5)
-                        <a href="">
-                          <button type="button" class="btn btn-info">
-                            Task List Cold Storage
-                          </button>
-                        </a>
-                        @elseif($equipment->jenis == 6)
-                        <a href="">
-                          <button type="button" class="btn btn-info">
-                            Task List Cooling Unit & AC Panel
-                          </button>
-                        </a>
-                        @elseif($equipment->jenis == 7)
-                        <a href="">
-                          <button type="button" class="btn btn-info">
-                            Task List Mini Chiller
-                          </button>
-                        </a>
-                        @elseif($equipment->jenis == 8)
-                        <a href="">
-                          <button type="button" class="btn btn-info">
-                            Task List Evaporative Air Cooler
-                          </button>
-                        </a>
-                        @elseif($equipment->jenis == 9)
-                        <a href="">
-                          <button type="button" class="btn btn-info">
-                            Task List AHU
-                          </button>
-                        </a>
-                        @elseif($equipment->jenis == 10)
-                        <a href="">
-                          <button type="button" class="btn btn-info">
-                            Task List Cooling Tower
-                          </button>
-                        </a>
-                        @elseif($equipment->jenis == 11)
-                        <a href="">
-                          <button type="button" class="btn btn-info">
-                            Task List Humidifier
-                          </button>
-                        </a>
-                        @elseif($equipment->jenis == 12)
-                        <a href="">
-                          <button type="button" class="btn btn-info">
-                            Task List Dehumidifier
-                        </a>
-                        @elseif($equipment->jenis == 13)
-
-                        <a href="">
-                          <button type="button" class="btn btn-info">
-                            Task List Fan Cooling Unit
-                          </button>
-                        </a>
-                        @elseif($equipment->jenis == 14)
-                        <a href="">
-                          <button type="button" class="btn btn-info">
-                            Task List Exhaust Fan
-                          </button>
-                        </a>
-                        @elseif($equipment->jenis == 15)
-                        <a href="">
-                          <button type="button" class="btn btn-info">
-                            Task List Pompa
-                          </button>
-                        </a>
-                        @elseif($equipment->jenis == 16)
-                        <a href="">
-                          <button type="button" class="btn btn-info">
-                            Task List Spot Cooling
-                          </button>
-                        </a>
-                        @elseif($equipment->jenis == 17)
-                        <a href="">
-                          <button type="button" class="btn btn-info">
-                            Task List Water Mist
-                          </button>
-                        </a>
-                        @elseif($equipment->jenis == 18)
-                        <a href="">
-                          <button type="button" class="btn btn-info">
-                            Task List Chiller Centrifugal
-                          </button>
-                        </a>
-                        @elseif($equipment->jenis == 19)
-                        <a href="">
-                          <button type="button" class="btn btn-info">
-                            Task List Floor Standing
-                          </button>
-                        </a>
-                        @elseif($equipment->jenis == 20)
-                        <a href="">
-                          <button type="button" class="btn btn-info">
-                            Task List Ac Cassette
-                          </button>
-                        </a>
-                        @elseif($equipment->jenis == 21)
-                        <a href="">
-                          <button type="button" class="btn btn-info">
-                            Task List Split Duct
-                          </button>
-                        </a>
-                        @endif
                       </div>
+                      <div class="col-md-6 col-sm-12 mb-2">
+                        <button type="button" class="btn btn-danger w-100">
+                          Trouble Shoot
+                        </button>
+                      </div>
+                      @php
+                      $taskLists = [
+                      1 => 'Ac Split',
+                      2 => 'AUHP',
+                      3 => 'Cooled Water Chiller',
+                      4 => 'PAC',
+                      5 => 'Cold Storage',
+                      6 => 'Cooling Unit & AC Panel',
+                      7 => 'Mini Chiller',
+                      8 => 'Evaporative Air Cooler',
+                      9 => 'AHU',
+                      10 => 'Cooling Tower',
+                      11 => 'Humidifier',
+                      12 => 'Dehumidifier',
+                      13 => 'Fan Cooling Unit',
+                      14 => 'Exhaust Fan',
+                      15 => 'Pompa',
+                      16 => 'Spot Cooling',
+                      17 => 'Water Mist',
+                      18 => 'Chiller Centrifugal',
+                      19 => 'Floor Standing',
+                      20 => 'Ac Cassette',
+                      21 => 'Split Duct'
+                      ];
+                      @endphp
+                      @if (isset($taskLists[$equipment->jenis]))
+                      <div class="col-md-6 col-sm-12 mb-2">
+                        <a href="" class="btn btn-info w-100">
+                          Task List {{ $taskLists[$equipment->jenis] }}
+                        </a>
+                      </div>
+                      @endif
                     </div>
                   </div>
-                  <div class="col-md-6"></div>
                 </div>
               </div>
             </div>
+
             <div class="row">
               <hr>
               <h6>History Equipment</h6>
@@ -303,15 +208,15 @@
                 </thead>
                 <tbody>
                   @php
-                    $no = 1;
+                  $no = 1;
                   @endphp
                   @foreach ($history as $data)
-                    <tr>
-                      <td>{{$no++}}</td>
-                      <td>{{$data->created_at}}</td>
-                      <td>{{$data->type}}</td>
-                      <td><button class="btn btn-primary">Detail</button></td>
-                    </tr>
+                  <tr>
+                    <td>{{$no++}}</td>
+                    <td>{{$data->created_at}}</td>
+                    <td>{{$data->type}}</td>
+                    <td><button class="btn btn-primary">Detail</button></td>
+                  </tr>
                   @endforeach
                 </tbody>
               </table>
