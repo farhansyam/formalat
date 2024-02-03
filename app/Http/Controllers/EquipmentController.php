@@ -8,7 +8,7 @@ use App\Models\Equipment;
 use App\Models\History;
 use App\Models\Kapasitas;
 use Illuminate\Http\Request;
-
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 class EquipmentController extends Controller
 {
     /**
@@ -59,7 +59,14 @@ class EquipmentController extends Controller
             $fileimg->storeAs('public/image', $name);
             $equipment->foto = $name;
         }
+        $equipment->save();
+        $route = route('equipment.show', ['equipment' => $equipment->id]);
+        $qrCode = QrCode::generate($route);
+
+        // Save QR code to the 'qrcode' column
+        $equipment->qrcode = $qrCode;
         $equipment->save(); 
+        $route = route('equipment.show', ['equipment' => $equipment->id]);
         return redirect()->route('equipment.index')->with('success', 'Data equipment berhasil ditambahkan');
     }
 
@@ -109,5 +116,4 @@ class EquipmentController extends Controller
         $equipment->delete();
         return redirect()->route('equipment.index')->with('success', 'Data equipment berhasil dihapus');
     }
-    
 }

@@ -14,6 +14,7 @@
           <div class="card-body">
             <h5 class="card-title mb-0">Equipment Info</h5>
             <img src="{{asset('storage/image')}}/{{$equipment->foto}}" alt="">
+            {!!$equipment->qrcode!!}
           </div>
           <hr class="mt-0 mb-5">
           <div class="card-body">
@@ -145,11 +146,11 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="row">
-                      <div class="col-md-offset-9 col-md-9">
-                        <a href="{{route('survey.create',$equipment->id)}}" class="btn btn-primary">
-
+                      <div class="col-md-6 col-sm-12 mb-2">
+                        <a href="{{ route('survey.create', $equipment->id) }}" class="btn btn-primary w-100">
                           <i class="ti ti-edit fs-5"></i> Survey
                         </a>
+<<<<<<< HEAD
                         <a href="">
                           <button type="button" class="btn btn-danger">
                             Trouble Shoot
@@ -281,13 +282,52 @@
                           </button>
                         </a>
                         @endif
+=======
+>>>>>>> af86bfc9c297f0e7ac372300ede8edff73b05526
                       </div>
+                      <div class="col-md-6 col-sm-12 mb-2">
+                        <button type="button" class="btn btn-danger w-100">
+                          Trouble Shoot
+                        </button>
+                      </div>
+                      @php
+                      $taskLists = [
+                      1 => 'Ac Split',
+                      2 => 'AUHP',
+                      3 => 'Cooled Water Chiller',
+                      4 => 'PAC',
+                      5 => 'Cold Storage',
+                      6 => 'Cooling Unit & AC Panel',
+                      7 => 'Mini Chiller',
+                      8 => 'Evaporative Air Cooler',
+                      9 => 'AHU',
+                      10 => 'Cooling Tower',
+                      11 => 'Humidifier',
+                      12 => 'Dehumidifier',
+                      13 => 'Fan Cooling Unit',
+                      14 => 'Exhaust Fan',
+                      15 => 'Pompa',
+                      16 => 'Spot Cooling',
+                      17 => 'Water Mist',
+                      18 => 'Chiller Centrifugal',
+                      19 => 'Floor Standing',
+                      20 => 'Ac Cassette',
+                      21 => 'Split Duct'
+                      ];
+                      @endphp
+                      @if (isset($taskLists[$equipment->jenis]))
+                      <div class="col-md-6 col-sm-12 mb-2">
+                        <a href="" class="btn btn-info w-100">
+                          Task List {{ $taskLists[$equipment->jenis] }}
+                        </a>
+                      </div>
+                      @endif
                     </div>
                   </div>
-                  <div class="col-md-6"></div>
                 </div>
               </div>
             </div>
+
             <div class="row">
               <hr>
               <h6>History Equipment</h6>
@@ -302,9 +342,10 @@
                 </thead>
                 <tbody>
                   @php
-                    $no = 1;
+                  $no = 1;
                   @endphp
                   @foreach ($history as $data)
+<<<<<<< HEAD
                    
                       <tr>
                         <td>{{$no++}}</td>
@@ -318,6 +359,14 @@
                             </div>
                         </td>
                     </tr>
+=======
+                  <tr>
+                    <td>{{$no++}}</td>
+                    <td>{{$data->created_at}}</td>
+                    <td>{{$data->type}}</td>
+                    <td><button class="btn btn-primary">Detail</button></td>
+                  </tr>
+>>>>>>> af86bfc9c297f0e7ac372300ede8edff73b05526
                   @endforeach
                 </tbody>
               </table>

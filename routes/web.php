@@ -37,6 +37,7 @@ Route::resource('equipment', EquipmentController::class)->name('index', 'equipme
 
 Route::resource('formberitaacara', FormBeritaAcaraController::class)->name('index', 'formberitaacara.index');
 Route::get('survey/{id}', [FormBeritaAcaraController::class,'create'])->name('survey.create');
+Route::get('search', [EquipmentController::class,'scan'])->name('scan');
 Route::resource('troubleshoot', TroubleshootController::class)->name('index', 'troubleshoot.index');
 
 

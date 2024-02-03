@@ -108,6 +108,14 @@
                 <span class="hide-menu">Equipment</span>
               </a>
             </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="{{route('scan')}}" aria-expanded="false">
+                <span>
+                  <i class="ti ti-qrcode"></i>
+                </span>
+                <span class="hide-menu">Scan</span>
+              </a>
+            </li>
 
         </nav>
         <div class="fixed-profile p-3 bg-light-secondary rounded sidebar-ad mt-3">
