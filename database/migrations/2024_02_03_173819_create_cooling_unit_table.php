@@ -4,16 +4,16 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateColdStoragesTable extends Migration
+class CreateCoolingUnitTable extends Migration
 {
-   /**
+    /**
      * Run the migrations.
      *
      * @return void
      */
     public function up()
     {
-        Schema::create('cold_storages', function (Blueprint $table) {
+        Schema::create('cooling_units', function (Blueprint $table) {
             $table->id();
             $table->text('q1');
             $table->text('q2');
@@ -36,19 +36,6 @@ class CreateColdStoragesTable extends Migration
             $table->text('q19');
             $table->text('q20');
             $table->text('q21');
-            $table->text('q22');
-            $table->text('q23');
-            $table->text('q24');
-            $table->text('q25');
-            $table->text('q26');
-            $table->text('q27');
-            $table->text('q28');
-            $table->text('q29');
-            $table->text('q30');
-            $table->text('q31');
-            $table->text('q32');
-            $table->text('q33');
-            $table->text('q34');
             $table->timestamps();
         });
     }
@@ -60,6 +47,6 @@ class CreateColdStoragesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cold_storages');
+        Schema::dropIfExists('cooling_units');
     }
 }

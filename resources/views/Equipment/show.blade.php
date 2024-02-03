@@ -305,11 +305,18 @@
                     $no = 1;
                   @endphp
                   @foreach ($history as $data)
-                    <tr>
-                      <td>{{$no++}}</td>
-                      <td>{{$data->created_at}}</td>
-                      <td>{{$data->type}}</td>
-                      <td><button class="btn btn-primary">Detail</button></td>
+                   
+                      <tr>
+                        <td>{{$no++}}</td>
+                        <td>{{$data->created_at}}</td>
+                        <td>{{$data->type}}</td>
+                        <td>
+                            <div class="btn-group">
+                              <button class="btn btn-primary mx-1 btn-block">Detail</button>
+                              <button class="btn btn-warning mx-1 btn-block">Edit</button>
+                              <button class="btn btn-danger mx-1 btn-block">Delete</button>
+                            </div>
+                        </td>
                     </tr>
                   @endforeach
                 </tbody>

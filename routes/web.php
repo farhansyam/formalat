@@ -34,6 +34,7 @@ Route::resource('area', AreaController::class)->name('index', 'area.index');
 Route::resource('equipment', EquipmentController::class)->name('index', 'equipment.index');
 
 
+
 Route::resource('formberitaacara', FormBeritaAcaraController::class)->name('index', 'formberitaacara.index');
 Route::get('survey/{id}', [FormBeritaAcaraController::class,'create'])->name('survey.create');
 Route::resource('troubleshoot', TroubleshootController::class)->name('index', 'troubleshoot.index');
@@ -41,7 +42,13 @@ Route::resource('troubleshoot', TroubleshootController::class)->name('index', 't
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/cold-storage', [ColdStorageController::class, 'index'])->name('cold-storage.index');
-Route::get('/cooling-unit', [CoolingUnitController::class, 'index'])->name('cooling-unit.index');
+Route::resource('/cold-storage', ColdStorageController::class)->names([
+    'index' => 'cold-storage.index', // Nama untuk rute index
+]);
+Route::resource('/cooling-unit', CoolingUnitController::class)->names([
+    'index' => 'cooling-unit.index', // Nama untuk rute index
+]);
+
+
 Route::get('/evaporator-aircooler', [EvaporatorAirCoolerController::class, 'index'])->name('evaporator-aircooler.index');
 Route::get('/mini-chiller', [MiniChillerController::class, 'index'])->name('mini-chiller.index');
