@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormBeritaAcaraController;
 use App\Http\Controllers\KapasitasController;
 use App\Http\Controllers\TroubleshootController;
+use App\Models\EvaporatorAirCooler;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -45,11 +46,17 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('/cold-storage', ColdStorageController::class)->names([
     'index' => 'cold-storage.index', // Nama untuk rute index
+    'edit' => 'cold-storage.edit', // Nama untuk rute index
 ]);
 Route::resource('/cooling-unit', CoolingUnitController::class)->names([
     'index' => 'cooling-unit.index', // Nama untuk rute index
+    'edit' => 'cooling-unit.edit', // Nama untuk rute index
 ]);
-
-
-Route::get('/evaporator-aircooler', [EvaporatorAirCoolerController::class, 'index'])->name('evaporator-aircooler.index');
-Route::get('/mini-chiller', [MiniChillerController::class, 'index'])->name('mini-chiller.index');
+Route::resource('/mini-chiller', MiniChillerController::class)->names([
+    'index' => 'mini-chiller.index', // Nama untuk rute index
+    'edit' => 'mini-chiller.edit', // Nama untuk rute index
+]);
+Route::resource('/evaporator-aircooler', EvaporatorAirCoolerController::class)->names([
+    'index' => 'evaporator-aircooler.index', // Nama untuk rute index#
+    'edit' => 'evaporator-aircooler.edit', // Nama untuk rute index
+]);

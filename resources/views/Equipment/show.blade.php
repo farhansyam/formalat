@@ -150,7 +150,6 @@
                         <a href="{{ route('survey.create', $equipment->id) }}" class="btn btn-primary w-100">
                           <i class="ti ti-edit fs-5"></i> Survey
                         </a>
-<<<<<<< HEAD
                         <a href="">
                           <button type="button" class="btn btn-danger">
                             Trouble Shoot
@@ -282,8 +281,6 @@
                           </button>
                         </a>
                         @endif
-=======
->>>>>>> af86bfc9c297f0e7ac372300ede8edff73b05526
                       </div>
                       <div class="col-md-6 col-sm-12 mb-2">
                         <button type="button" class="btn btn-danger w-100">
@@ -345,7 +342,6 @@
                   $no = 1;
                   @endphp
                   @foreach ($history as $data)
-<<<<<<< HEAD
                    
                       <tr>
                         <td>{{$no++}}</td>
@@ -354,19 +350,35 @@
                         <td>
                             <div class="btn-group">
                               <button class="btn btn-primary mx-1 btn-block">Detail</button>
-                              <button class="btn btn-warning mx-1 btn-block">Edit</button>
+                              
+                              @if($equipment->jenis == 5)
+                              <a href="{{ route('cold-storage.edit', ['cold_storage' => $coldStorage->id]) }}">
+                                <button type="button" class="btn btn-info">Task List Cold Storage</button>
+                            </a>
+                            
+                              @elseif($equipment->jenis == 6)
+                              <a href="{{ route('cooling-unit.edit') }}">
+                                <button type="button" class="btn btn-info">
+                                  Task List Cooling Unit & AC Panel
+                                </button>
+                              </a>
+                              @elseif($equipment->jenis == 7)
+                              <a href="{{ route('mini-chiller.edit') }}">
+                                <button type="button" class="btn btn-info">
+                                  Task List Mini Chiller
+                                </button>
+                              </a>
+                              @elseif($equipment->jenis == 8)
+                              <a href="{{ route('evaporator-aircooler.edit') }}">
+                                <button type="button" class="btn btn-info">
+                                  Task List Evaporative Air Cooler
+                                </button>
+                              </a>
+                              @endif
                               <button class="btn btn-danger mx-1 btn-block">Delete</button>
                             </div>
                         </td>
                     </tr>
-=======
-                  <tr>
-                    <td>{{$no++}}</td>
-                    <td>{{$data->created_at}}</td>
-                    <td>{{$data->type}}</td>
-                    <td><button class="btn btn-primary">Detail</button></td>
-                  </tr>
->>>>>>> af86bfc9c297f0e7ac372300ede8edff73b05526
                   @endforeach
                 </tbody>
               </table>

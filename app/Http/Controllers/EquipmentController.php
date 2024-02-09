@@ -43,32 +43,45 @@ class EquipmentController extends Controller
      */
     public function store(Request $request)
     {
-        $equipment= new Equipment;
-        $equipment->jenis= $request->jenis;
-        $equipment->customer= $request->customer;
-        $equipment->brand= $request->brand;
-        $equipment->serial_number= $request->serial_number;
-        $equipment->nameplate= $request->nameplate;
-        $equipment->tahun_installasi= $request->tahun_installasi;
-        $equipment->tahun_pembuatan= $request->tahun_pembuatan;
-        $equipment->kapasitas= $request->kapasitas;
-        $equipment->area= $request->area;
+        // Membuat instance Equipment baru
+        $equipment = new Equipment;
+    
+        // Mengisi atribut-atribut Equipment dengan data dari request
+        $equipment->jenis = $request->jenis;
+        $equipment->customer = $request->customer;
+        $equipment->brand = $request->brand;
+        $equipment->serial_number = $request->serial_number;
+        $equipment->nameplate = $request->nameplate;
+        $equipment->tahun_installasi = $request->tahun_installasi;
+        $equipment->tahun_pembuatan = $request->tahun_pembuatan;
+        $equipment->kapasitas = $request->kapasitas;
+        $equipment->area = $request->area;
+    
+        // Menyimpan foto jika ada
         if ($request->hasFile('foto')) {
             $fileimg = $request->file('foto');
             $name = time() . '_' . $fileimg->getClientOriginalName();
             $fileimg->storeAs('public/image', $name);
             $equipment->foto = $name;
         }
+    
+        // Menyimpan data Equipment ke database
         $equipment->save();
+    
+        // Membuat URL route untuk Equipment yang baru dibuat
         $route = route('equipment.show', ['equipment' => $equipment->id]);
-        $qrCode = QrCode::generate($route);
-
-        // Save QR code to the 'qrcode' column
-        $equipment->qrcode = $qrCode;
-        $equipment->save(); 
-        $route = route('equipment.show', ['equipment' => $equipment->id]);
+    
+        // Generate QR code dari URL route
+        // $qrCode = QrCode::generate($route);
+    
+        // // Menyimpan QR code ke kolom 'qrcode' pada tabel Equipment
+        // $equipment->qrcode = $qrCode;
+        // $equipment->save();
+    
+        // Kembali ke halaman index Equipment dengan pesan sukses
         return redirect()->route('equipment.index')->with('success', 'Data equipment berhasil ditambahkan');
     }
+    
 
     /**
      * Display the specified resource.
@@ -116,4 +129,5 @@ class EquipmentController extends Controller
         $equipment->delete();
         return redirect()->route('equipment.index')->with('success', 'Data equipment berhasil dihapus');
     }
+    
 }

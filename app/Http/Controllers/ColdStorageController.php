@@ -147,11 +147,13 @@ class ColdStorageController extends Controller
      * @param  \App\Models\ColdStorage  $coldStorage
      * @return \Illuminate\Http\Response
      */
-    public function edit(ColdStorage $coldStorage)
+    public function edit(ColdStorage $coldStorage ,$id)
     {
-        // $coldStorage = ColdStorage::findOrFail($id); // Sesuaikan dengan model ColdStorage
-        // return view('equipment.ColdStorage.edit', compact('coldStorage'));
+        $coldStorage = ColdStorage::findOrFail($id); // Sesuaikan dengan model ColdStorage
+        return view('equipment.ColdStorage.edit', compact('coldStorage'));
+        
     }
+
 
     /**
      * Update the specified resource in storage.
