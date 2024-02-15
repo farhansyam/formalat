@@ -12,8 +12,12 @@
       <form class="form-horizontal">
         <div class="form-body">
           <div class="card-body">
-            <h5 class="card-title mb-0">Equipment Info</h5>
-            <img src="{{asset('storage/image')}}/{{$equipment->foto}}" alt="">
+            <h5 class="card-title mb-0">Equipment Info</h5><br>
+            <img src="{{asset('storage')}}/{{$equipment->qrcode}}" alt="" width="200">
+
+            @foreach(explode(',', $equipment->foto) as $imageName)
+            <img src="{{asset('image')}}/{{$imageName}}" alt="" width="200">
+            @endforeach
             {!!$equipment->qrcode!!}
           </div>
           <hr class="mt-0 mb-5">
@@ -138,6 +142,22 @@
                   </div>
                 </div>
               </div>
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="control-label text-end col-md-3">Tanggal:</label>
+                  <div class="col-md-9">
+                    <p class="form-control-static">{{$equipment->tanggaloperasi}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="control-label text-end col-md-3">Jam:</label>
+                  <div class="col-md-9">
+                    <p class="form-control-static">{{$equipment->jamoperasi}}</p>
+                  </div>
+                </div>
+              </div>
               <!--/span-->
             </div>
             <hr>
@@ -152,9 +172,9 @@
                         </a>
                       </div>
                       <div class="col-md-6 col-sm-12 mb-2">
-                        <button type="button" class="btn btn-danger w-100">
+                        <a href="{{ route('ts.create', $equipment->id) }}" type="button" class="btn btn-danger w-100">
                           Trouble Shoot
-                        </button>
+                        </a>
                       </div>
                       @php
                       $taskLists = [
@@ -215,7 +235,18 @@
                     <td>{{$no++}}</td>
                     <td>{{$data->created_at}}</td>
                     <td>{{$data->type}}</td>
-                    <td><button class="btn btn-primary">Detail</button></td>
+                    <td>
+                      @if($data->type == 'Survei')
+                      <a href="{{ route('formberitaacara.show', $data->id_act) }}" class="btn btn-primary">Detail</a>
+                      @elseif($data->type == "Troubleshoot")
+                      <a href="{{ route('troubleshoot.show', $data->id_act) }}" class="btn btn-primary">Detail</a>
+
+                      @else
+                      // Teks atau logika untuk kondisi lainnya dapat ditambahkan di sini.
+                      @endif
+
+
+                    </td>
                   </tr>
                   @endforeach
                 </tbody>

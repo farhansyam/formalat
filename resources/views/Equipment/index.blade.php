@@ -27,6 +27,9 @@
                     No
                   </th>
                   <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-priority="2" class="border tablesaw-priority-2">
+                    Id
+                  </th>
+                  <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-priority="2" class="border tablesaw-priority-2">
                     jenis
                   </th>
                   <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-priority="2" class="border tablesaw-priority-2">
@@ -47,9 +50,10 @@
                 @foreach ($equipment as $data)
                 <tr>
                   <td>{{$no++}}</td>
+                  <td>{{$formattedId = sprintf('%05d', $data->id)}}EQ</td>
 
                   <td class="tablesaw-priority-3">@if($data->jenis == 1)
-                    {{ "AC-FLOOR-CASST-SPDCT" }}
+                    {{ "AC Split" }}
                     @elseif($data->jenis == 2)
                     {{ "AHUP" }}
                     @elseif($data->jenis == 3)
@@ -84,6 +88,12 @@
                     {{ "Water Mist" }}
                     @elseif($data->jenis == 18)
                     {{ "Chiller Centrifugal" }}
+                    @elseif($data->jenis == 19)
+                    {{ "Floor Standing" }}
+                    @elseif($data->jenis == 20)
+                    {{ "Ac Cassette" }}
+                    @elseif($data->jenis == 21)
+                    {{ "Split Duct" }}
                     @endif
                   </td>
                   <td class="tablesaw-priority-3">{{$data->brand}}</td>
@@ -93,8 +103,8 @@
                       <a href="{{ route('equipment.show', $data->id) }}" style="text-decoration: none;">
                         <button class="btn btn-success">Detail</button>
                       </a>
-                      <a href="{{ route('equipment.edit', $data->id) }}" style="text-decoration: none;margin-left: 10px;">
-                        <button class="btn btn-warning">Edit</button>
+                      <a href="{{ route('equipment.print', $data->id) }}" style="text-decoration: none;margin-left: 10px;">
+                        <button class="btn btn-warning">Print</button>
                       </a>
 
                       <form action="{{ route('equipment.destroy', $data->id) }}" method="POST" style="margin-left: 10px;">
@@ -110,6 +120,7 @@
                 @endforeach
               </tbody>
             </table>
+            {{$equipment->links()}}
           </div>
         </div>
       </div>

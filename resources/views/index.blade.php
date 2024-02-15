@@ -69,7 +69,7 @@
             </div>
           </div>
           <div class="d-flex align-items-center justify-content-between mt-4">
-            <h3 class="mb-0 fw-semibold fs-7">1.150</h3>
+            <h3 class="mb-0 fw-semibold fs-7">{{$troubleshoot}}</h3>
           </div>
         </div>
       </div>
@@ -99,11 +99,13 @@
               <td class="bg-transparent"> {{$equipment->customer}} <i class="ti ti-chevron-down text-danger ms-1 fs-4"></i>
               </td>
               <td class="bg-transparent">
-                <i class=""></i>{{$equipment->brand}}
+                <!-- <i class=""></i>{{$equipment->brand}} -->
+                <i class=""></i>{{$formattedId = sprintf('%05d', $equipment->id)}}EQ
               </td>
               <td class="bg-transparent">{{$data->created_at}}</td>
               <td class="text-end rounded-end bg-transparent">
-                <span class="badge bg-danger">{{$data->type}}</span>
+                <span class="badge bg-warning">{{$data->type}}</span>
+                <a href="{{ route('formberitaacara.show', $data->id_act) }}" class="badge bg-primary">Detail</a>
               </td>
             </tr>
             @endforeach

@@ -44,7 +44,78 @@
               <label for="">Brand</label>
               <input type="text" name="brand" class="form-control" id="" value="" required="">
               <label for="">Foto</label>
-              <input type="file" name="foto" class="form-control" id="" value="" required="">
+              <style>
+                .preview-images-zone {
+                  width: 100%;
+                  border: 1px solid #ddd;
+                  min-height: 180px;
+                  border-radius: 5px;
+                  padding: 20px;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  flex-wrap: wrap;
+                }
+
+                .preview-image {
+                  width: 200px;
+                  height: 200px;
+                  margin: 10px;
+                  position: relative;
+                }
+
+                .preview-image img {
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+                  border-radius: 5px;
+                }
+
+                .preview-image .delete {
+                  position: absolute;
+                  top: 0;
+                  right: 0;
+                  cursor: pointer;
+                  background-color: rgba(255, 255, 255, 0.8);
+                  border-radius: 50%;
+                  padding: 5px;
+                }
+              </style>
+              <div class="container mt-5">
+                <input class="form-control" type="file" id="fileInput" multiple accept="image/*" name="foto[]">
+                <div class="preview-images-zone"></div>
+              </div>
+              <!-- Bootstrap Bundle with Popper -->
+              <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+              <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+              <script>
+                document.getElementById('fileInput').addEventListener('change', function() {
+                  var previewZone = document.querySelector('.preview-images-zone');
+                  previewZone.innerHTML = '';
+                  var files = this.files;
+                  if (files) {
+                    [].forEach.call(files, function(file) {
+                      var reader = new FileReader();
+                      reader.onload = function(event) {
+                        var previewImage = document.createElement('div');
+                        previewImage.className = 'preview-image';
+                        var image = new Image();
+                        image.src = event.target.result;
+                        previewImage.appendChild(image);
+                        var deleteButton = document.createElement('span');
+                        deleteButton.className = 'delete';
+                        deleteButton.innerHTML = '&times;';
+                        deleteButton.addEventListener('click', function() {
+                          previewImage.parentNode.removeChild(previewImage);
+                        });
+                        previewImage.appendChild(deleteButton);
+                        previewZone.appendChild(previewImage);
+                      };
+                      reader.readAsDataURL(file);
+                    });
+                  }
+                });
+              </script>
               <label for="">Serial Number</label>
               <input type="text" name="serial_number" class="form-control" id="" value="" required="">
               <label for="">Name Plate</label>
@@ -52,6 +123,9 @@
                 <option value="ada">Ada</option>
                 <option value="Tidak Ada">Tidak ada</option>
               </select>
+              <br>
+              <label for="">Tanggal Operasi</label>
+              <input type="date" name="tanggaloperasi" id="" class="form-control">
             </div>
             <div class="col-md-6">
               <label for="">tahun pembuatan</label>
@@ -77,6 +151,10 @@
                 <option value="{{$data->nama}}">{{$data->nama}}</option>
                 @endforeach
               </select>
+              <br>
+              <label for="">Jam</label>
+              <input name="jamoperasi" type="number" id="" class="form-control" placeholder="Masukan Jam">
+
               <button class="btn btn-info px-4 mt-3" type="submit">
                 Submit
               </button>

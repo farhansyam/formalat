@@ -21,18 +21,23 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 |
 */
 
-Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-Route::resource('customer', CustomerController::class)->name('index', 'customer.index');
-Route::resource('kapasitas', KapasitasController::class)->name('index', 'kapasitas.index');
-Route::resource('area', AreaController::class)->name('index', 'area.index');
-Route::resource('equipment', EquipmentController::class)->name('index', 'equipment.index');
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
+Route::resource('customer', CustomerController::class)->name('index', 'customer.index')->middleware('auth');
+Route::resource('kapasitas', KapasitasController::class)->name('index', 'kapasitas.index')->middleware('auth');
+Route::resource('area', AreaController::class)->name('index', 'area.index')->middleware('auth');
+Route::resource('equipment', EquipmentController::class)->name('index', 'equipment.index')->middleware('auth');
+Route::get('equipment/print/{id}', [EquipmentController::class,'print'])->name('equipment.print')->middleware('auth');
+Route::get('equipment/pp/{id}', [EquipmentController::class,'printpp'])->name('equipment.printp')->middleware('auth');
 
 
-Route::resource('formberitaacara', FormBeritaAcaraController::class)->name('index', 'formberitaacara.index');
-Route::get('survey/{id}', [FormBeritaAcaraController::class,'create'])->name('survey.create');
-Route::get('search', [EquipmentController::class,'scan'])->name('scan');
-Route::resource('troubleshoot', TroubleshootController::class)->name('index', 'troubleshoot.index');
+Route::resource('formberitaacara', FormBeritaAcaraController::class)->name('index', 'formberitaacara.index')->middleware('auth');
+Route::get('survey/{id}', [FormBeritaAcaraController::class,'create'])->name('survey.create')->middleware('auth');
+Route::get('search', [EquipmentController::class,'scan'])->name('scan')->middleware('auth');
+Route::resource('troubleshoot', TroubleshootController::class)->name('index', 'troubleshoot.index')->middleware('auth');
+Route::get('ts/{id}', [TroubleshootController::class, 'create'])->name('ts.create')->middleware('auth');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
+
+
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
