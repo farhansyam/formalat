@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Equipment;
 use App\Models\History;
 use App\Models\EvaporatorAirCooler;
 use Illuminate\Http\Request;
@@ -13,22 +14,17 @@ class EvaporatorAirCoolerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $equipmentId = 1; // Placeholder value
-        
-        return view('equipment.EvaporatorAirCooler.index', compact('equipmentId'));
-    }
-
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        // return view('equipment.EvaporatorAirCooler.create');
+        $equipmentId = Equipment::find($id); // Placeholder value
+        
+        return view('equipment.EvaporatorAirCooler.create', compact('id'));
     }
 
 
@@ -117,10 +113,10 @@ class EvaporatorAirCoolerController extends Controller
             $history = new History();
             $history->type = "Evaporator Air Cooler"; // Sesuaikan dengan jenis equipment
             $history->id_act = $EvaporatorAirCooler->id;
-            $history->id_equipment = $request->id_equipment;
+            $history->id_equipment = $request->id;
             $history->id_user = "1"; // Gunakan ID user yang sedang login
             $history->save();
-            return redirect()->route('equipment.show',$request->id_equipment)->with('success', 'Task list telah disimpan.');
+            return redirect()->route('equipment.show',$request->id)->with('success', 'Task list telah disimpan.');
     }
 
     
@@ -135,8 +131,8 @@ class EvaporatorAirCoolerController extends Controller
      */
     public function show(EvaporatorAirCooler $EvaporatorAirCooler)
     {
-        // $EvaporatorAirCooler = EvaporatorAirCooler::findOrFail($id); // Sesuaikan dengan model EvaporatorAirCooler
-        // return view('equipment.EvaporatorAirCooler.show', compact('EvaporatorAirCooler'));
+        $EvaporatorAirCooler = EvaporatorAirCooler::findOrFail(); // Sesuaikan dengan model EvaporatorAirCooler
+        return view('equipment.EvaporatorAirCooler.show', compact('EvaporatorAirCooler'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -146,8 +142,8 @@ class EvaporatorAirCoolerController extends Controller
      */
     public function edit(EvaporatorAirCooler $EvaporatorAirCooler)
     {
-        // $EvaporatorAirCooler = EvaporatorAirCooler::findOrFail($id); // Sesuaikan dengan model EvaporatorAirCooler
-        // return view('equipment.EvaporatorAirCooler.edit', compact('EvaporatorAirCooler'));
+        $EvaporatorAirCooler = EvaporatorAirCooler::findOrFail(); // Sesuaikan dengan model EvaporatorAirCooler
+        return view('equipment.EvaporatorAirCooler.edit', compact('EvaporatorAirCooler'));
     }
 
     /**

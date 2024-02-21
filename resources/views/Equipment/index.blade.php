@@ -51,9 +51,9 @@
                   <td class="tablesaw-priority-3">@if($data->jenis == 1)
                     {{ "AC-FLOOR-CASST-SPDCT" }}
                     @elseif($data->jenis == 2)
-                    {{ "AHUP" }}
-                    @elseif($data->jenis == 3)
                     {{ "Cooled Water Chiller" }}
+                    @elseif($data->jenis == 3)
+                    {{ "AHUP" }}
                     @elseif($data->jenis == 4)
                     {{ "PAC" }}
                     @elseif($data->jenis == 5)

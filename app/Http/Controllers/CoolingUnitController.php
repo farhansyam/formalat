@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\History;
 use App\Models\CoolingUnit;
 use Illuminate\Http\Request;
+use App\Models\Equipment;
 
 class CoolingUnitController extends Controller
 {
@@ -13,23 +14,18 @@ class CoolingUnitController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+    public function create($id)
     {
-        $equipmentId = 1; // Placeholder value
+        $equipmentId = Equipment::find($id); // Placeholder value
         
-        return view('equipment.CoolingUnit.index', compact('equipmentId'));
+        return view('equipment.CoolingUnit.create', compact('id'));
     }
-
-
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        // return view('equipment.CoolingUnit.create');
-    }
 
 
     /**
@@ -81,9 +77,23 @@ class CoolingUnitController extends Controller
 
             'q19' => implode(',', $request->input('q19')),
 
-            'q20' => implode(',', $request->input('q20')),#
+            'q20' => implode(',', $request->input('q20')),
 
             'q21' => implode(',', $request->input('q21')),
+
+            'q22' => implode(',', $request->input('q22')),
+
+            'q23' => implode(',', $request->input('q23')),
+
+            'q24' => implode(',', $request->input('q24')),
+
+            'q25' => implode(',', $request->input('q25')),
+
+            'q26' => implode(',', $request->input('q26')),
+
+            'q27' => implode(',', $request->input('q27')),
+
+            'q28' => implode(',', $request->input('q28')),
         ];
     
         // Simpan data ke dalam model CoolingUnit
@@ -93,10 +103,10 @@ class CoolingUnitController extends Controller
             $history = new History();
             $history->type = "Cooling Unit"; // Sesuaikan dengan jenis equipment
             $history->id_act = $CoolingUnit->id;
-            $history->id_equipment = $request->id_equipment;
+            $history->id_equipment = $request->id;
             $history->id_user = "1"; // Gunakan ID user yang sedang login
             $history->save();
-            return redirect()->route('equipment.show',$request->id_equipment)->with('success', 'Task list telah disimpan.');
+            return redirect()->route('equipment.show',$request->id)->with('success', 'Task list telah disimpan.');
     }
 
     
@@ -111,8 +121,8 @@ class CoolingUnitController extends Controller
      */
     public function show(CoolingUnit $CoolingUnit)
     {
-        // $CoolingUnit = CoolingUnit::findOrFail($id); // Sesuaikan dengan model CoolingUnit
-        // return view('equipment.CoolingUnit.show', compact('CoolingUnit'));
+        $CoolingUnit = CoolingUnit::findOrFail(); // Sesuaikan dengan model CoolingUnit
+        return view('equipment.CoolingUnit.show', compact('CoolingUnit'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -122,8 +132,8 @@ class CoolingUnitController extends Controller
      */
     public function edit(CoolingUnit $CoolingUnit)
     {
-        // $CoolingUnit = CoolingUnit::findOrFail($id); // Sesuaikan dengan model CoolingUnit
-        // return view('equipment.CoolingUnit.edit', compact('CoolingUnit'));
+        $CoolingUnit = CoolingUnit::findOrFail(); // Sesuaikan dengan model CoolingUnit
+        return view('equipment.CoolingUnit.edit', compact('CoolingUnit'));
     }
 
     /**
