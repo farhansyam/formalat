@@ -43,6 +43,7 @@
               </select>
               <label for="">Brand</label>
               <input type="text" name="brand" class="form-control" id="" value="" required="">
+              <br>
               <label for="">Foto</label>
               <style>
                 .preview-images-zone {
@@ -81,11 +82,10 @@
                   padding: 5px;
                 }
               </style>
-              <div class="container mt-5">
-                <input class="form-control" type="file" id="fileInput" multiple accept="image/*" name="foto[]">
-                <div class="preview-images-zone"></div>
-              </div>
+              <input class="form-control" type="file" id="fileInput" multiple accept="image/*" name="foto[]">
+              <div class="preview-images-zone"></div>
               <!-- Bootstrap Bundle with Popper -->
+              <br>
               <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
               <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
               <script>
@@ -123,9 +123,6 @@
                 <option value="ada">Ada</option>
                 <option value="Tidak Ada">Tidak ada</option>
               </select>
-              <br>
-              <label for="">Tanggal Operasi</label>
-              <input type="date" name="tanggaloperasi" id="" class="form-control">
             </div>
             <div class="col-md-6">
               <label for="">tahun pembuatan</label>
@@ -139,7 +136,7 @@
                 <option value="{{$data->kapasitas}}">{{$data->kapasitas}} - {{$data->satuan}}</option>
                 @endforeach
               </select>
-              <label for="">Area - Area Site</label>
+              <label for="">Site - Area Site</label>
               <select name="area" id="" class="form-select">
                 @foreach ($area as $data)
                 <option value="{{$data->area}}">{{$data->area}} - {{$data->site}}</option>
@@ -152,8 +149,25 @@
                 @endforeach
               </select>
               <br>
-              <label for="">Jam</label>
+              <label for="">Running Hours</label>
               <input name="jamoperasi" type="number" id="" class="form-control" placeholder="Masukan Jam">
+              <br>
+              <label for="">Room</label>
+              <input name="room" type="text" id="" class="form-control" placeholder="Room">
+              <br>
+              <label for="">Jenis Freon</label>
+              <select name="jenis_freon" id="" class="form-select">
+                @foreach ($freon as $data)
+                <option value="{{$data->jenis_freon}}">{{$data->jenis_freon}}</option>
+                @endforeach
+              </select>
+              <br>
+              <label for="">PM Regulerly</label>
+              <select name="reguler" id="" class="form-select">
+                @foreach ($reguler as $data)
+                <option value="{{$data->reguler}}">{{$data->reguler}}</option>
+                @endforeach
+              </select>
 
               <button class="btn btn-info px-4 mt-3" type="submit">
                 Submit

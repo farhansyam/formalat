@@ -20,8 +20,18 @@
                   <label for="">Customer</label>
                   <input type="text" name="nama" class="form-control" id=""  value=""
                     required="">
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="">Bidang Usaha</label>
+                  <input type="text" name="bidang" class="form-control" id=""  value=""
+                    required="">
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="">Alamat</label>
+                  <textarea name="alamat" id="" cols="30" rows="10" class="form-control"></textarea>
+                </div>
               <button class="btn btn-info px-4 mt-3" type="submit">
-                Submi
+                Submit
               </button>
             </form>
           </div>

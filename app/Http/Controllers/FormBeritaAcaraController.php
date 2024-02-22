@@ -56,8 +56,9 @@ class FormBeritaAcaraController extends Controller
         $history->id_act = $formBeritaAcara->id;
         $history->id_equipment = $request->id_equipment;
         $history->id_user = "1";
-        $history->save();
-        
+        $equipment = Equipment::find($id);
+        $history->customer = $equipment->customer;
+        $history->save();        
 
     return redirect()->route('equipment.show',$request->id_equipment)->with('success', 'Form Berita Acara telah disimpan.');
     }

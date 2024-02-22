@@ -18,10 +18,10 @@
     @method('PUT')
               <div class="row">
                 <div class="col-md-6 mb-3">
-                  <label for="">area</label>
+                  <label for="">Site</label>
                   <input type="text" name="area" class="form-control" id=""  value="{{$area->area}}"
                     required="">
-                  <label for="">area site</label>
+                  <label for="">Area Site</label>
                   <input type="text" name="site" class="form-control" id=""  value="{{$area->site}}"
                     required="">
                   <input type="hidden" name="id" class="form-control" id=""  value="{{$area->id}}">

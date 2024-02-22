@@ -16,12 +16,13 @@ class CreateHistoryTable extends Migration
         Schema::create('history', function (Blueprint $table) {
             $table->id();
             $table->text('type');
-            $table->text('id_act');
-            $table->text('id_equipment');
-            $table->text('id_user');
+            $table->unsignedBigInteger('id_act'); // Mengubah tipe data menjadi unsignedBigInteger
+            $table->unsignedBigInteger('id_equipment'); // Mengubah tipe data menjadi unsignedBigInteger
+            $table->unsignedBigInteger('id_user'); // Mengubah tipe data menjadi unsignedBigInteger
             $table->timestamps();
         });
     }
+    
 
     /**
      * Reverse the migrations.

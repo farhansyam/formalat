@@ -191,19 +191,60 @@
                 {{ "Split Duct" }}
                 @endif
             </h1>
-            <p>ID Equipment : {{$formattedId = sprintf('%05d', $equipment->id)}}EQ
+            <p>ID Equipment : <?php
+                                // Array untuk memetakan angka ke jenis
+                                $jenis = [
+                                    1 => "AC Split",
+                                    2 => "AHUP",
+                                    3 => "Cooled Water Chiller",
+                                    4 => "PAC",
+                                    5 => "Cold Storage",
+                                    6 => "Cooling Unit & AC Panel",
+                                    7 => "Mini Chiller",
+                                    8 => "Evaporative Air Cooler",
+                                    9 => "AHU",
+                                    10 => "Cooling tower",
+                                    11 => "Humidifier",
+                                    12 => "Dehumidifier",
+                                    13 => "FCU (Fan Cooling Unit)",
+                                    14 => "Exhaust Fan",
+                                    15 => "Pompa",
+                                    16 => "Spot Cooling",
+                                    17 => "Water Mist",
+                                    18 => "Chiller Centrifugal",
+                                    19 => "Floor Standing",
+                                    20 => "Ac Cassette",
+                                    21 => "Split Duct"
+                                ];
+                                // Ambil singkatan dari jenis berdasarkan angka
+                                $singkatan1 = isset($jenis[$equipment->jenis]) ? substr(str_replace(' ', '', ucwords(strtolower($jenis[$equipment->jenis]))), 0, 3) : '';
+                                $singkatan2 = strtoupper(substr($equipment->area, 0, 1));
+
+                                // Mengambil karakter tengah (atau kedua karakter dari tengah jika panjang genap)
+                                $panjang = strlen($equipment->area);
+                                $posisi_tengah = floor($panjang / 2);
+                                $singkatan2 .= strtoupper(substr($equipment->area, $posisi_tengah, 1));
+
+                                // Mengambil karakter terakhir
+                                $singkatan2 .= strtoupper(substr($equipment->area, -1));
+                                echo strtoupper($singkatan1 . $singkatan2 . $formattedId = sprintf('%05d', $equipment->id));
+                                // Mengambil karakter pertama
+
+
+                                ?>
         </header>
         <table>
             <thead>
                 <tr>
                     <th rowspan="5" style="margin-right: 10px;">
-                        <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('storage/' . $equipment->qrcode))) }}" alt="Gambar" width="100">
+                        <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path($equipment->qrcode))) }}" alt="Gambar" width="100">
 
                     </th>
                     <th></th>
                     <th>Brand</th>
                     <th>: {{$equipment->brand}}</th>
-                    <th></th>
+                    <th>&nbsp;&nbsp;</th>
+                    <th>&nbsp;&nbsp;</th>
                     <th>Kapasitas</th>
                     <th>: {{$equipment->kapasitas}}</th>
                     <th></th>
@@ -213,8 +254,9 @@
 
                     <th>Serial Number</th>
                     <th>: {{$equipment->serial_number}}</th>
-                    <th></th>
-                    <th>Area</th>
+                    <th>&nbsp;&nbsp;</th>
+                    <th>&nbsp;&nbsp;</th>
+                    <th>Site</th>
                     <th>: {{$equipment->area}}</th>
                     <th></th>
                 </tr>
@@ -223,9 +265,10 @@
 
                     <th>Name Plate</th>
                     <th>: {{$equipment->nameplate}}</th>
-                    <th></th>
-                    <th>Tanggal Operasional</th>
-                    <th>: {{$equipment->tanggaloperasi}}</th>
+                    <th>&nbsp;&nbsp;</th>
+                    <th>&nbsp;&nbsp;</th>
+                    <th>Room</th>
+                    <th>: {{$equipment->room}}</th>
                     <th></th>
                 </tr>
                 <tr>
@@ -233,9 +276,11 @@
 
                     <th>Tahun Pembuatan</th>
                     <th>: {{$equipment->tahun_pembuatan}}</th>
-                    <th></th>
-                    <th>Jam Operasi</th>
-                    <th>: {{$equipment->jamoperasi}} Jam</th>
+                    <th>&nbsp;&nbsp;</th>
+                    <th>&nbsp;&nbsp;</th>
+                    <th>PM Regulerly</th>
+                    <th>: {{$equipment->reguler}} </th>
+
                     <th></th>
                 </tr>
                 <tr>
@@ -243,6 +288,20 @@
 
                     <th>Tahun Instalasi</th>
                     <th>: {{$equipment->tahun_installasi}}</th>
+                    <th>&nbsp;&nbsp;</th>
+                    <th>&nbsp;&nbsp;</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th>&nbsp;&nbsp;</th>
+                    <th>&nbsp;&nbsp;</th>
+
+                    <th>Tipe Freon</th>
+                    <th>: {{$equipment->jenis_freon}}</th>
+                    <th>&nbsp;&nbsp;</th>
+                    <th>&nbsp;&nbsp;</th>
                     <th></th>
                 </tr>
             </thead>

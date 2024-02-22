@@ -14,7 +14,7 @@ use App\Models\ServiceReport;
 class DashboardController extends Controller
 {
     function index(){
-        $customer = Customer::count();
+        $customer = Customer::all();
         $troubleshoot = ServiceReport::count();
         $equipment = Equipment::count();
         $survey = FormBeritaAcara::count();

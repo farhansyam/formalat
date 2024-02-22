@@ -26,7 +26,7 @@
                     <option value="RTU">RTU</option>
                   </select>
               <button class="btn btn-info px-4 mt-3" type="submit">
-                Submi
+                Submit
               </button>
             </form>
           </div>

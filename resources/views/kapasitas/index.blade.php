@@ -18,7 +18,7 @@
           <div class="card-body">
             <a href="{{route('kapasitas.create')}}">
               <button class="btn btn-primary">Tambah</button></a><br><br>
-            <table class="table table-striped table-hover table-bordered table no-wrap tablesaw-columntoggle" data-tablesaw-mode="columntoggle" id="tablesaw-1386">
+            <table class="table table-striped table-hover table-bordered table no-wrap tablesaw-columntoggle" data-tablesaw-mode="columntoggle" id="example">
               <thead>
                 <tr>
 

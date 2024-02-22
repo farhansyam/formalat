@@ -26,7 +26,7 @@
                     required="">
                   <input type="hidden" name="id" class="form-control" id=""  value="{{$kapasitas->id}}">
               <button class="btn btn-info px-4 mt-3" type="submit">
-                Submi
+                Submit
               </button>
             </form>
           </div>

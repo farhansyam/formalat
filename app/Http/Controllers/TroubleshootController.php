@@ -72,8 +72,11 @@ class TroubleshootController extends Controller
         $history->type = "Troubleshoot";
         $history->id_act = $formBeritaAcara->id;
         $history->id_equipment = $request->id_equipment;
-        $history->id_user = "1";
+        $history->id_user = auth()->user()->id;
         $history->save();
+        $equipment = Equipment::find($request->id_equipment);
+        $equipment->update_ts = date('Y-m-d');
+        $equipment->save();
         return redirect()->route('equipment.show', $request->id_equipment)->with('success', 'Form Berita Acara telah disimpan.');
     }
 
