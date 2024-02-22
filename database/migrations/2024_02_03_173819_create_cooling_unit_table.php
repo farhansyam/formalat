@@ -36,6 +36,13 @@ class CreateCoolingUnitTable extends Migration
             $table->text('q19');
             $table->text('q20');
             $table->text('q21');
+            $table->text('q22');
+            $table->text('q23');
+            $table->text('q24');
+            $table->text('q25');
+            $table->text('q26');
+            $table->text('q27');
+            $table->text('q28');
             $table->timestamps();
         });
     }

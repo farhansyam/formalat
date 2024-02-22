@@ -31,6 +31,13 @@ class CoolingUnit extends Model
         'q19',
         'q20',
         'q21',
+        'q22',
+        'q23',
+        'q24',
+        'q25',
+        'q26',
+        'q27',
+        'q28',
     ];
 
     protected $table = "cooling_units";

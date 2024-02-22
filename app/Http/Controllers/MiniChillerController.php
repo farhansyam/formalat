@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\History;
 use App\Models\MiniChiller;
 use Illuminate\Http\Request;
+use App\Models\Equipment;
 
 class MiniChillerController extends Controller
 {
@@ -13,12 +14,6 @@ class MiniChillerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $equipmentId = 1; // Placeholder value
-        
-        return view('equipment.MiniChiller.index', compact('equipmentId'));
-    }
 
 
     /**
@@ -26,9 +21,11 @@ class MiniChillerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        // return view('equipment.MiniChiller.create');
+        $equipmentId = Equipment::find($id); // Placeholder value
+        
+        return view('equipment.MiniChiller.create', compact('id'));
     }
 
 
@@ -74,6 +71,62 @@ class MiniChillerController extends Controller
             'q15' => implode(',', $request->input('q15')),
 
             'q16' => implode(',', $request->input('q16')),
+            
+            'q17' => implode(',', $request->input('q17')),
+
+            'q18' => implode(',', $request->input('q18')),
+
+            'q19' => implode(',', $request->input('q19')),
+
+            'q20' => implode(',', $request->input('q20')),
+
+            'q21' => implode(',', $request->input('q21')),
+
+            'q22' => implode(',', $request->input('q22')),
+
+            'q23' => implode(',', $request->input('q23')),
+
+            'q24' => implode(',', $request->input('q24')),
+
+            'q25' => implode(',', $request->input('q25')),
+
+            'q26' => implode(',', $request->input('q26')),
+
+            'q27' => implode(',', $request->input('q27')),
+
+            'q28' => implode(',', $request->input('q28')),
+
+            'q29' => implode(',', $request->input('q29')),
+
+            'q30' => implode(',', $request->input('q30')),
+
+            'q31' => implode(',', $request->input('q31')),
+
+            'q32' => implode(',', $request->input('q32')),
+
+            'q33' => implode(',', $request->input('q33')),
+
+            'q34' => implode(',', $request->input('q34')),
+
+            'q35' => implode(',', $request->input('q35')),
+
+            'q36' => implode(',', $request->input('q36')),
+            
+            'q37' => implode(',', $request->input('q37')),
+
+            'q38' => implode(',', $request->input('q38')),
+
+            'q39' => implode(',', $request->input('q39')),
+
+            'q40' => implode(',', $request->input('q40')),
+
+            'q41' => implode(',', $request->input('q41')),
+
+            'q42' => implode(',', $request->input('q42')),
+
+            'q43' => implode(',', $request->input('q43')),
+
+            'q44' => implode(',', $request->input('q44')),
         ];
     
         // Simpan data ke dalam model MiniChiller
@@ -83,10 +136,10 @@ class MiniChillerController extends Controller
             $history = new History();
             $history->type = "Mini Chiller"; // Sesuaikan dengan jenis equipment
             $history->id_act = $MiniChiller->id;
-            $history->id_equipment = $request->id_equipment;
+            $history->id_equipment = $request->id;
             $history->id_user = "1"; // Gunakan ID user yang sedang login
             $history->save();
-            return redirect()->route('equipment.show',$request->id_equipment)->with('success', 'Task list telah disimpan.');
+            return redirect()->route('equipment.show',$request->id)->with('success', 'Task list telah disimpan.');
     }
 
     
@@ -101,8 +154,8 @@ class MiniChillerController extends Controller
      */
     public function show(MiniChiller $MiniChiller)
     {
-        // $MiniChiller = MiniChiller::findOrFail($id); // Sesuaikan dengan model MiniChiller
-        // return view('equipment.MiniChiller.show', compact('MiniChiller'));
+        $MiniChiller = MiniChiller::findOrFail(); // Sesuaikan dengan model MiniChiller
+        return view('equipment.MiniChiller.show', compact('MiniChiller'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -112,16 +165,10 @@ class MiniChillerController extends Controller
      */
     public function edit(MiniChiller $MiniChiller)
     {
-        // $MiniChiller = MiniChiller::findOrFail($id); // Sesuaikan dengan model MiniChiller
-        // return view('equipment.MiniChiller.edit', compact('MiniChiller'));
+        $MiniChiller = MiniChiller::findOrFail(); // Sesuaikan dengan model MiniChiller
+        return view('equipment.MiniChiller.edit', compact('MiniChiller'));
     }
 
-    public function destroy(MiniChiller $miniChiller,$id)
-    {
-        $miniChiller = MiniChiller::findOrFail($id);
-        $miniChiller->delete();
-        return redirect()->route('equipment.index')->with('success', 'Data equipment berhasil dihapus');
-    }
 
     /**
      * Update the specified resource in storage.

@@ -23,8 +23,9 @@
                 <option value="19">Floor Standing</option>
                 <option value="20">Ac Cassette</option>
                 <option value="21">Split Duct</option>
-                <option value="2">AHUP</option>
-                <option value="3">Cooled Water Chiller</option>
+ 
+                <option value="2">Cooled Water Chiller</option>
+                <option value="3">AHUP</option>
                 <option value="4">PAC</option>
                 <option value="5">Cold Storage</option>
                 <option value="6">Cooling Unit & AC Panel</option>
