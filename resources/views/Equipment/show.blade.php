@@ -169,7 +169,7 @@
                         </a>
 
                         @elseif($equipment->jenis == 3)
-                        <a href="{{ route('au-hp.create2',$equipment->id) }}">
+                        <a href="{{ route('AUHP.create2',$equipment->id) }}">
                           <button type="button" class="btn btn-info">
                             Task List AUHP
                           </button>
@@ -188,7 +188,7 @@
                         </a>
 
                         @elseif($equipment->jenis == 6)
-                        <a href="{{ route('cooling-unit.create2',$equipment->id) }}">
+                        <a href="{{ route('cooling-unit.create',$equipment->id) }}">
                           <button type="button" class="btn btn-info">
                             Task List Cooling Unit & AC Panel
                           </button>
@@ -229,7 +229,7 @@
                             Task List Dehumidifier
                         </a>
                         @elseif($equipment->jenis == 13)
-                        <a href="{{ route('fcu.create2',$equipment->id) }}">
+                        <a href="{{ route('FCU.create2',$equipment->id) }}">
                           <button type="button" class="btn btn-info">
                             Task List Fan Cooling Unit
                           </button>
@@ -365,8 +365,8 @@
                         </div>
                         @elseif($equipment->jenis == 3)
                         <div class="btn-group">
-                          <a href="{{ route("au-hp.show",$data->id) }}" class="btn btn-primary mx-1 btn-block">Detail</a>
-                          <a href="{{ route("au-hp.edit",$data->id) }}" class="btn btn-warning mx-1 btn-block">edit</a>
+                          <a href="{{ route("AUHP.show",$data->id) }}" class="btn btn-primary mx-1 btn-block">Detail</a>
+                          <a href="{{ route("AUHP.edit",$data->id) }}" class="btn btn-warning mx-1 btn-block">edit</a>
                             <a href="" class="btn btn-danger mx-1 btn-block">DELETE</a>
                         </div>
                         @elseif($equipment->jenis == 4)
@@ -377,26 +377,26 @@
                         </div>
                         @elseif($equipment->jenis == 5)
                         <div class="btn-group">
-                          <a href="{{ route("cold-storage.show",$data->id) }}" class="btn btn-primary mx-1 btn-block">Detail</a>
-                          <a href="{{ route("cold-storage.edit",$data->id) }}" class="btn btn-warning mx-1 btn-block">edit</a>
+                          <a href="{{ route("cold-storage.show",$data->id_equipment) }}" class="btn btn-primary mx-1 btn-block">detail</a>
+                          <a href="{{ route("cold-storage.edit",$data->id_equipment) }}" class="btn btn-warning mx-1 btn-block">edit</a>
                             <a href="" class="btn btn-danger mx-1 btn-block">DELETE</a>
                         </div>
-                        @elseif($equipment->jenis == 6)
+                        @elseif($equipment->jenis == 6) 
                         <div class="btn-group">
-                          <a href="{{ route("cooling-unit.show",$data->id) }}" class="btn btn-primary mx-1 btn-block">Detail</a>
-                          <a href="{{ route("cooling-unit.edit",$data->id) }}" class="btn btn-warning mx-1 btn-block">edit</a>
+                          <a href="{{ route("cooling-unit.show",$data->id_equipment) }}" class="btn btn-primary mx-1 btn-block">Detail</a>
+                          <a href="{{ route("cooling-unit.edit",$data->id_equipment) }}" class="btn btn-warning mx-1 btn-block">edit</a>
                             <a href="" class="btn btn-danger mx-1 btn-block">DELETE</a>
                         </div>
                         @elseif($equipment->jenis == 7)
                         <div class="btn-group">
-                          <a href="{{ route("mini-chiller.show",$data->id) }}" class="btn btn-primary mx-1 btn-block">Detail</a>
-                          <a href="{{ route("mini-chiller.edit",$data->id) }}" class="btn btn-warning mx-1 btn-block">edit</a>
-                            <a href="" class="btn btn-danger mx-1 btn-block">DELETE</a>
+                          <a href="{{ route("mini-chiller.show",$data->id_equipment) }}" class="btn btn-primary mx-1 btn-block">Detail</a>
+                          <a href="{{ route("mini-chiller.edit",$data->id_equipment) }}" class="btn btn-warning mx-1 btn-block">edit</a>
+                            <a href=""e class="btn btn-danger mx-1 btn-block">DELETE</a>
                         </div>
                         @elseif($equipment->jenis == 8)
                         <div class="btn-group">
-                          <a href="{{ route("evaporator-aircooler.show",$data->id) }}" class="btn btn-primary mx-1 btn-block">Detail</a>
-                          <a href="{{ route("evaporator-aircooler.edit",$data->id) }}" class="btn btn-warning mx-1 btn-block">edit</a>
+                          <a href="{{ route("evaporator-aircooler.show",$data->id_equipment) }}" class="btn btn-primary mx-1 btn-block">Detail</a>
+                          <a href="{{ route("evaporator-aircooler.edit",$data->id_equipment) }}" class="btn btn-warning mx-1 btn-block">edit</a>
                             <a href="" class="btn btn-danger mx-1 btn-block">DELETE</a>
                         </div>
                         @elseif($equipment->jenis == 9)
@@ -425,8 +425,8 @@
                         </div>
                         @elseif($equipment->jenis == 13)
                         <div class="btn-group">
-                          <a href="{{ route("fcu.show",$data->id) }}" class="btn btn-primary mx-1 btn-block">Detail</a>
-                          <a href="{{ route("fcu.edit",$data->id) }}" class="btn btn-warning mx-1 btn-block">edit</a>
+                          <a href="{{ route("FCU.show",$data->id) }}" class="btn btn-primary mx-1 btn-block">Detail</a>
+                          <a href="{{ route("FCU.edit",$data->id) }}" class="btn btn-warning mx-1 btn-block">edit</a>
                             <a href="" class="btn btn-danger mx-1 btn-block">DELETE</a>
                         </div>
                         @elseif($equipment->jenis == 14)

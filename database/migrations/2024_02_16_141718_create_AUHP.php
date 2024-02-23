@@ -77,6 +77,6 @@ class CreateAuHp extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('au_hps');
+        Schema::dropIfExists('AUHPS');
     }
 }

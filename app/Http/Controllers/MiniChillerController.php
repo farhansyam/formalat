@@ -21,7 +21,7 @@ class MiniChillerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create2($id)
     {
         $equipmentId = Equipment::find($id); // Placeholder value
         
@@ -154,7 +154,6 @@ class MiniChillerController extends Controller
      */
     public function show(MiniChiller $MiniChiller)
     {
-        $MiniChiller = MiniChiller::findOrFail(); // Sesuaikan dengan model MiniChiller
         return view('equipment.MiniChiller.show', compact('MiniChiller'));
     }
     /**
@@ -165,7 +164,6 @@ class MiniChillerController extends Controller
      */
     public function edit(MiniChiller $MiniChiller)
     {
-        $MiniChiller = MiniChiller::findOrFail(); // Sesuaikan dengan model MiniChiller
         return view('equipment.MiniChiller.edit', compact('MiniChiller'));
     }
 

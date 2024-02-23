@@ -15,7 +15,7 @@
                             <h4 class="card-title mb-0 text-center">Task List Air Unit Handling Precision</h4>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('au-hp.store') }}" method="POST">
+                            <form action="{{ route('AUHP.store') }}" method="POST">
                                 @csrf
                                 <table class="table table-bordered" id="personelTeamTable">
                                     <thead>
