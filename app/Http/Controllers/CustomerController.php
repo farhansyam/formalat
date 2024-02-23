@@ -36,8 +36,10 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         $customer = new Customer;
-        $customer -> nama = $request -> nama;
-        $customer -> save();
+        $customer->nama = $request->nama;
+        $customer->alamat = $request->alamat;
+        $customer->bidang = $request->bidang;
+        $customer->save();
         return redirect()->route('customer.index')->with(['message'=>'Data berhasil dibuat']);
     }
 
@@ -74,7 +76,9 @@ class CustomerController extends Controller
     public function update(Request $request, Customer $customer)
     {
             
-            $customer -> nama = $request -> nama;
+            $customer->nama = $request->nama;
+            $customer->alamat = $request->alamat;
+            $customer->bidang = $request->bidang;
             $customer -> save();
             return redirect()->route('customer.index')->with(['message'=>'Data berhasil diubah']);
     }

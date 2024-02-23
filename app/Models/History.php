@@ -9,4 +9,10 @@ class History extends Model
 {
     use HasFactory;
     protected $table = 'History';
+
+
+    public function equipment()
+    {
+        return Equipment::where('id', $this->id_equipment);
+    }
 }

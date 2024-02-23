@@ -18,7 +18,7 @@
           <div class="card-body">
             <a href="{{route('customer.create')}}">
               <button class="btn btn-primary">Tambah</button></a><br><br>
-            <table class="table table-striped table-hover table-bordered table no-wrap tablesaw-columntoggle" data-tablesaw-mode="columntoggle" id="tablesaw-1386">
+            <table class="table table-striped table-hover table-bordered table no-wrap tablesaw-columntoggle" data-tablesaw-mode="columntoggle" id="example">
               <thead>
                 <tr>
 
@@ -28,6 +28,12 @@
                   </th>
                   <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-priority="2" class="border tablesaw-priority-2">
                     Customer
+                  </th>
+                  <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-priority="2" class="border tablesaw-priority-2">
+                    Bidang Usaha
+                  </th>
+                  <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-priority="2" class="border tablesaw-priority-2">
+                    Alamat
                   </th>
                   <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-priority="1" class="border tablesaw-priority-1">
                     <abbr title="Rotten Tomato Rating">Option</abbr>
@@ -42,9 +48,14 @@
                 <tr>
                   <td>{{$no++}}</td>
                   <td class="tablesaw-priority-3">
-                    {{$data->id}}
+                    {{$data->nama}}
                   </td>
-                  <td class="tablesaw-priority-3">{{$data->nama}}</td>
+                  <td class="tablesaw-priority-3">
+                    {{$data->bidang}}
+                  </td>
+                  <td class="tablesaw-priority-3">
+                    {{$data->alamat}}
+                  </td>
                   <td class="tablesaw-priority-1">
                     <div style="display: flex; align-items: center;">
                       <a href="{{ route('customer.edit', $data->id) }}" style="text-decoration: none;">

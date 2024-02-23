@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\History;
+use App\Models\Equipment;
 use Illuminate\Http\Request;
 use App\Models\ServiceReport;
 use App\Models\FormBeritaAcara;
@@ -26,9 +28,11 @@ class TroubleshootController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        return view('servicereport.create');
+        $equipment = Equipment::find($id);
+        
+        return view('servicereport.create',compact('equipment'));
     }
 
     /**
@@ -64,9 +68,16 @@ class TroubleshootController extends Controller
                 'type' => $type, // Ubah menjadi 'keterangan'
             ]);
         }
-
-
-        return redirect()->route('troubleshoot.index')->with('success', 'Form Berita Acara telah disimpan.');
+        $history = new History();
+        $history->type = "Troubleshoot";
+        $history->id_act = $formBeritaAcara->id;
+        $history->id_equipment = $request->id_equipment;
+        $history->id_user = auth()->user()->id;
+        $history->save();
+        $equipment = Equipment::find($request->id_equipment);
+        $equipment->update_ts = date('Y-m-d');
+        $equipment->save();
+        return redirect()->route('equipment.show', $request->id_equipment)->with('success', 'Form Berita Acara telah disimpan.');
     }
 
     /**
@@ -77,6 +88,7 @@ class TroubleshootController extends Controller
      */
     public function show($id)
     {
+        
         $service = ServiceReport::find($id);
         $list = ListKebutuhanBeritaAcara::where('type', 'FormserviceReport')->where('id_beritaacara', $id)->get();
         return view('servicereport.show', compact('service', 'list'));

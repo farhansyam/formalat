@@ -14,6 +14,14 @@ class ColdStorageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+<<<<<<< HEAD
+    public function index2($id)
+    {
+        $equipmentId = Equipment::find($id); // Placeholder value
+        
+        return view('equipment.ColdStorage.index', compact('equipmentId'));
+    }
+=======
 
      public function create2($id)
      {
@@ -22,6 +30,7 @@ class ColdStorageController extends Controller
          return view('equipment.ColdStorage.create', compact('id'));
     
      }
+>>>>>>> 802ba86988fa02daf2157331f8722bbdf57a4a93
 
 
     /**

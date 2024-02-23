@@ -18,7 +18,7 @@
           <div class="card-body">
             <a href="{{route('area.create')}}">
               <button class="btn btn-primary">Tambah</button></a><br><br>
-            <table class="table table-striped table-hover table-bordered table no-wrap tablesaw-columntoggle" data-tablesaw-mode="columntoggle" id="tablesaw-1386">
+            <table class="table table-striped table-hover table-bordered table no-wrap tablesaw-columntoggle" data-tablesaw-mode="columntoggle" id="example">
               <thead>
                 <tr>
 
@@ -27,10 +27,10 @@
                     No
                   </th>
                   <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-priority="2" class="border tablesaw-priority-2">
-                    area
+                    Site
                   </th>
                   <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-priority="2" class="border tablesaw-priority-2">
-                    area site
+                    Area Site
                   </th>
                   <th scope="col" data-tablesaw-sortable-col="" data-tablesaw-priority="1" class="border tablesaw-priority-1">
                     <abbr title="Rotten Tomato Rating">Option</abbr>
@@ -44,7 +44,7 @@
                 @foreach ($area as $data)
                 <tr>
                   <td>{{$no++}}</td>
-             
+
                   <td class="tablesaw-priority-3">{{$data->area}}</td>
                   <td class="tablesaw-priority-3">{{$data->site}}</td>
                   <td class="tablesaw-priority-1">
